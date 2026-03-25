@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: sharing-is-caring
+    env: node
+    region: singapore
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DB_PATH
+        value: /var/data/listings.db
+      - key: NODE_VERSION
+        value: 18.20.4
+    disk:
+      name: db
+      mountPath: /var/data
+      sizeGB: 1
